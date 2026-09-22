@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "/framerusercontent.com/cms/(.+\\.framercms)",
+      "has": [{ "type": "query", "key": "range" }],
+      "dest": "/api/cms?p=$1"
+    },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
