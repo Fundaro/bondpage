@@ -1,0 +1,19 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "fndr-public-bnd-page",
+  "account_id": "5ca27d9af33a3553d919e64a140a2ca4",
+  "compatibility_date": "2026-08-20",
+  "main": "src/index.js",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Only CMS data needs the Worker; everything else is served as static files.
+    "run_worker_first": ["/framerusercontent.com/cms/*"],
+    // Pages that exist only in Framer's client-side router (e.g. /properties) get index.html,
+    // and the Framer runtime renders the right page from the URL.
+    "not_found_handling": "single-page-application"
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "fndr.8nomads.com", "custom_domain": true }]
+}
